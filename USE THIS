@@ -1,0 +1,14 @@
+do this:sudo dpkg --add-architecture i386
+Install Grapejuice’s keyring by running:
+
+curl https://gitlab.com/brinkervii/grapejuice/-/raw/master/ci_scripts/signing_keys/public_key.gpg | sudo tee /usr/share/keyrings/grapejuice-archive-keyring.gpg
+To get access to the Grapejuice package, you’ll need to add the repository. Do that using:
+
+sudo tee /etc/apt/sources.list.d/grapejuice.list <<< 'deb [signed-by=/usr/share/keyrings/grapejuice-archive-keyring.gpg] https://brinkervii.gitlab.io/grapejuice/repositories/debian/ universal main'
+Since a new repository was added, you’ll need to update your system so the package can be found:
+
+sudo apt update && sudo apt upgrade -y
+Now, it’s time to install the Grapejuice package:
+
+sudo apt install -y grapejuice now we are done
+
